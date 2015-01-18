@@ -1,0 +1,26 @@
+{
+    "name": "root/app",
+    "description": "Get params from php cli, get rss feed to db and show on page with twig template",
+    "license": "free",
+    "authors": [
+        {
+            "name": "Robert Kel",
+            "email": "kel.robert@gmail.com"
+        }
+    ],
+    "minimum-stability": "beta",
+    "require": {
+        "twig/twig": "~1.0",
+        "doctrine/orm": "*",
+        "symfony/http-foundation": "2.1.*",
+        "symfony/routing": "2.1.*",
+        "symfony/console": "2.7.*@dev"
+    },
+    "autoload": {
+        "psr-4": {
+            "Rss\\Lib\\": "Lib/",
+            "Rss\\Entity\\": "Entity/",
+            "Rss\\Command\\": "Command/"
+        }
+    }
+}

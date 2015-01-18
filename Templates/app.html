@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="robots" content="index, follow, all" />
+    <meta name="Author" content="Sensio Labs" />
+    <meta name="Language" content="en" />
+    <meta name="Copyright" content="Sensio" />
+    <meta name="Publisher" content="Sensio" />
+    <meta name="Description" content="Twig - The flexible, fast, and secure template engine for PHP" />
+    <meta name="Keywords" content="twig, templating, template, engine, template engine, template language, php" />
+</head>
+
+<body>
+
+    <h1>Rss Feed {{ feed.url }}</h1>
+    <ul>
+        <a href="{{ feed.url }}">
+            <li>
+                <h3>{{ feed.last_update.date|date("Y-m-d") }} ({{ feeds_count }}) {{ feed.title }}</h3>
+            </li>
+        </a>
+            <ul>
+                <a href="{{ recent_item.link }}">
+                    <li>{{ recent_item.title }}</li>
+                </a>
+            </ul>
+    </ul>
+</body>
