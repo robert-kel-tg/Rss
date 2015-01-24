@@ -125,17 +125,20 @@ class RssDb
                 $entityManager->persist($feed);
                 $entityManager->flush();
 
-               foreach($this->feeds as $row) {
+                $this->feeds->rewind();
+                    while($this->feeds->valid()) {
 
-                   $item = new Item();
-                   $item->setFeed_id($feed->getId());
-                   $item->setTitle($row['title']);
-                   $item->setLink($row['link']);
-                   $item->setDescription($row['description']);
-                   $item->setPublished(new \DateTime($row['pubDate']));
+                        $item = new Item();
+                        $item->setFeed_id($feed->getId());
+                        $item->setTitle($this->feeds->current()->getTitle());
+                        $item->setLink($this->feeds->current()->getLink());
+                        $item->setDescription($this->feeds->current()->getDescription());
+                        $item->setPublished(new \DateTime($this->feeds->current()->getPubDate()));
 
-                    $entityManager->persist($item);
-                }
+                        $this->feeds->next();
+
+                        $entityManager->persist($item);
+                    }
 
                 $entityManager->flush();
 

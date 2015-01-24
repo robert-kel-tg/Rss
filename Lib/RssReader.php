@@ -2,6 +2,100 @@
 
 namespace Rss\Lib;
 
+class RssItem
+{
+    private $title;
+
+    private $description;
+
+    private $pubDate;
+
+    private $guid;
+
+    private $link;
+
+    /**
+     * @return mixed
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * @param mixed $title
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param mixed $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPubDate()
+    {
+        return $this->pubDate;
+    }
+
+    /**
+     * @param mixed $pubDate
+     */
+    public function setPubDate($pubDate)
+    {
+        $this->pubDate = $pubDate;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getGuid()
+    {
+        return $this->guid;
+    }
+
+    /**
+     * @param mixed $guid
+     */
+    public function setGuid($guid)
+    {
+        $this->guid = $guid;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLink()
+    {
+        return $this->link;
+    }
+
+    /**
+     * @param mixed $link
+     */
+    public function setLink($link)
+    {
+        $this->link = $link;
+    }
+
+}
+
 class RssReader
 {
     private $url;
@@ -106,17 +200,19 @@ class RssReader
         $this->setTitle($title);
         $this->setLastModDate($lastModDate);
 
-        $feeds = array();
+        $spl = new \SplObjectStorage();
         foreach ($document->getElementsByTagName('item') as $node) {
-            $item = array(
-                'title' => $node->getElementsByTagName('title')->item(0)->nodeValue,
-                'description' => $node->getElementsByTagName('description')->item(0)->nodeValue,
-                'pubDate' => $node->getElementsByTagName('pubDate')->item(0)->nodeValue,
-                'guid' => $node->getElementsByTagName('guid')->item(0)->nodeValue,
-                'link' => $node->getElementsByTagName('link')->item(0)->nodeValue
-            );
-            array_push($feeds, $item);
+
+            $rssitem = new RssItem();
+            $rssitem->setTitle($node->getElementsByTagName('title')->item(0)->nodeValue);
+            $rssitem->setDescription($node->getElementsByTagName('description')->item(0)->nodeValue);
+            $rssitem->setPubDate($node->getElementsByTagName('pubDate')->item(0)->nodeValue);
+            $rssitem->setGuid($node->getElementsByTagName('guid')->item(0)->nodeValue);
+            $rssitem->setLink($node->getElementsByTagName('link')->item(0)->nodeValue);
+
+            $spl->attach($rssitem);
+            $rss = null;
         }
-        $this->setFeeds($feeds);
+        $this->setFeeds($spl);
     }
 }
