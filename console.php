@@ -2,10 +2,9 @@
 
 require_once('vendor/autoload.php');
 
-use Rss\Command\FeedCommand;
+use Rss\Src\RssCommand;
 use Symfony\Component\Console\Application;
 
 $application = new Application();
-$cmd = new FeedCommand();
-$application->add($cmd);
+$application->add(new RssCommand());
 $application->run();

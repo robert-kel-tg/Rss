@@ -14,11 +14,11 @@
         "doctrine/orm": "*",
         "symfony/http-foundation": "2.1.*",
         "symfony/routing": "2.1.*",
-        "symfony/console": "2.7.*@dev"
+        "symfony/console": "2.6.*@dev"
     },
     "autoload": {
         "psr-4": {
-            "Rss\\Lib\\": "Lib/",
+            "Rss\\Src\\": "Src/",
             "Rss\\Entity\\": "Entity/",
             "Rss\\Command\\": "Command/"
         }
