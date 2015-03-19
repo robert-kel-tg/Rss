@@ -33,9 +33,9 @@ class RssServiceTest extends \PHPUnit_Framework_TestCase
             ->with($this->equalTo('Petras'))
             ->will($this->returnValue($item));
 
-        echo '<pre>';
-        die(print_r($doctrineRssRepository));
-        echo '</pre>';
+        //echo '<pre>';
+        //die(print_r($doctrineRssRepository));
+        //echo '</pre>';
     }
 
 //    protected function getEmMock()
