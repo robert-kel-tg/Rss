@@ -5,7 +5,7 @@ require_once('vendor/autoload.php');
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing;
-
+//TODO insert class implementation
 $request = Request::createFromGlobals();
 $category = $request->get('category');
 
